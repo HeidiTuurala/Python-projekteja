@@ -1,0 +1,25 @@
+import random
+
+def kirjoita_luvut(luvut: list, lukuja_riville: int):
+    rivi = []
+    with open("luvut.csv","w") as tiedosto:
+        for luku in luvut:
+            rivi.append(1)
+            
+            if lukuja_riville == len(rivi):
+                rivi = ",".join(rivi)
+                tiedosto.write((rivi) + "\n")
+                rivi = []
+
+for lr in (5, 8, 12):
+    l = [random.randint(1,9) for x in range(random.randint(30,100))]
+    
+    print(f"Kutsutaan kirjoita_luvut lista, {lr})")
+    kirjoita_luvut(l, lr)
+    
+    print("Tiedoston sisältö:")
+    with open("luvut.csv") as t:
+        for rivi in t:
+            print(rivi.strip())
+            
+    print("")
